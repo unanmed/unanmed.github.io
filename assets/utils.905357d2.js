@@ -1,0 +1,1 @@
+import{R as t,U as c}from"./index.b657d5ac.js";import{S as u}from"./index.b657d5ac.js";import{drawAllFields as s}from"./draw.2738d88b.js";import"./vendor.7e1eed1e.js";function m(e,o,d,r,i){const n=new t(e,"",o,d);return n.setPosition(r,i),n}function j(e,o,d){const r=new c(e,o,d);return s(),r}export{u as Shape,m as addRoundObject,j as addUniformElectricField};
