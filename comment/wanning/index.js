@@ -22,7 +22,5 @@ if (isWifi) {
 
     const music = new Audio(src);
     music.loop = true;
-    document.oncanplay = () => {
-        music.play();
-    }
+    document.addEventListener('click', () => music.play());
 }
