@@ -22,5 +22,6 @@ if (isWifi) {
 
     const music = new Audio(src);
     music.loop = true;
-    document.addEventListener('click', () => music.play());
+    ['click', 'keydown', 'touchstart']
+        .forEach(v => document.addEventListener(v, () => music.play()));
 }
