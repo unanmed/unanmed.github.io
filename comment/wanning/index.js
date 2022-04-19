@@ -1,4 +1,4 @@
-const isWifi = navigator.connection.type === 'wifi';
+const isWifi = navigator.connection.type === 'wifi' || navigator.connection.downlink <= 10;
 const bgms = [
     'Collapsing World.mp3',
     'Grasswalk.mp3',
