@@ -21,5 +21,5 @@ if (isWifi) {
     const src = `https://unanmed.github.io/comment/${tower}/bgms/${target}`;
 
     const music = new Audio(src);
-    music.play();
+    document.body.addEventListener('click', e => music.play());
 }
