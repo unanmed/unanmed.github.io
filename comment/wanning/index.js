@@ -15,8 +15,6 @@ const bgms = [
 ];
 const tower = 'wanning';
 
-console.log(isWifi);
-
 if (isWifi) {
     const length = bgms.length;
     const target = bgms[~~(Math.random() * length)];
@@ -24,6 +22,7 @@ if (isWifi) {
 
     const music = new Audio(src);
     music.onload = () => {
+        console.log(1);
         music.play();
     }
 }
