@@ -8,15 +8,11 @@ div[id='app'] {
 }
 
 .renderText[data-v-0bf14f91] {
-    font: 400 1.2em text-font;
+    font: 400 1.4em text-font;
     text-shadow: 1px 1px 1px #000, 0px 0px 1px rgba(220, 230, 240, 0.3);
 }
 
 a {
-    color: rgb(41, 223, 255)
-}
-
-button.ant-bnt.ant-bnt-link, a, button.ant-bnt.ant-bnt-link.ant-bnt-sm {
     color: rgb(41, 223, 255)
 }
 
