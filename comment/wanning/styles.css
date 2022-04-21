@@ -1,0 +1,26 @@
+@font-face {
+    font-family: text-font;
+    src: url(./font.ttf);
+}
+
+div[id='app'] {
+    color: #def;
+}
+
+main {
+    background-color: #222;
+}
+
+p[class='renderText'] {
+    font: 400 1.2em text-font;
+    color: #def;
+    text-shadow: 1px 1px 2px #000, 0px 0px 2px rgba(220, 230, 240, 0.3);
+}
+
+a {
+    color: rgb(41, 223, 255)
+}
+
+button.ant-bnt.ant-bnt-link, a, button.ant-bnt.ant-bnt-link.ant-bnt-sm {
+    color: rgb(41, 223, 255)
+}
