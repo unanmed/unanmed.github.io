@@ -7,13 +7,8 @@ div[id='app'] {
     color: #def;
 }
 
-main {
-    background-color: #222;
-}
-
 p[class='renderText'] {
     font: 400 1.2em text-font;
-    color: #def;
     text-shadow: 1px 1px 2px #000, 0px 0px 2px rgba(220, 230, 240, 0.3);
 }
 
@@ -23,4 +18,26 @@ a {
 
 button.ant-bnt.ant-bnt-link, a, button.ant-bnt.ant-bnt-link.ant-bnt-sm {
     color: rgb(41, 223, 255)
+}
+
+tr {
+    animation: a 10000s linear infinite;
+    background: linear-gradient(90deg, rgba(0,255,255,0.2), rgba(255,255,0,0.3) 40%, rgba(255,255,0,0.3) 60%, rgba(0,255,255,0.2));
+}
+
+@keyframes a {
+    0% { background-position: 0; }
+    100% { background-position: 3e4em; }
+}
+#bbb {
+    text-shadow: 0px 0px 1px #0fd, 1px 1px 2px #0fd, -1px -1px 1px #0fd, 1px 1px 1px #000;
+    color: #fff;
+    font-weight: 300;
+}
+
+#aaa {
+    background: linear-gradient(to right, #ff5, #f88);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
