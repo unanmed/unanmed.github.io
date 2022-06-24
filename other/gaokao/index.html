@@ -21,12 +21,37 @@
         span {
             color: #f22;
         }
+        button {
+            width: 10em;
+            height: 2em;
+            font-size: 3em;
+            font-weight: 200;
+            color: white;
+            border-radius: 5px;
+            background-color: rgb(20, 167, 235);
+            transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            box-shadow: 0px 0px 5px black;
+            text-shadow: 2px 2px 2px black;
+            margin-right: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 2px solid rgb(20, 167, 235);
+        }
     </style>
 </head>
 <body>
-    <p>高考查分倒计时：<span id="time"></span>,打开此页面时到时间后会自动打开查分页面并跳转</p>
-    <p id="test">请点击页面来保证可以成功跳转，或点击此处跳转（不会覆盖本页面）</p>
+    <button id="button">点击查看倒计时</button>
+    <p class="time" style="display: none;">高考查分倒计时：<span id="time"></span>,打开此页面时到时间后会自动打开查分页面并跳转</p>
+    <p id="test" class="time" style="display: none;">点击此处可以跳转（不会覆盖本页面）</p>
     <script>
+        document.getElementById('button')
+            .onclick= () => {
+                const list = document.getElementsByClassName('time');
+                list[0].style.display = 'block';
+                list[1].style.display = 'block';
+                document.getElementById('button').style.display = 'none';
+            }
         document.getElementById('test')
             .onclick = () => window.open('http://www.haeea.cn/adc/pzcj.shtml');
         const span = document.getElementById('time');
