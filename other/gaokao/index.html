@@ -53,7 +53,7 @@
                 document.getElementById('button').style.display = 'none';
             }
         document.getElementById('test')
-            .onclick = () => window.open('http://www.haeea.cn/adc/pzcj.shtml');
+            .onclick = () => window.open('http://www.haeea.cn');
         const span = document.getElementById('time');
         const end = new Date(2022, 5, 25, 0, 0, 1);
         const id = setInterval(function () {
@@ -64,7 +64,7 @@
             const s = ~~((delta - h * 1000 * 60 * 60 - m * 1000 * 60) / 1000);
             span.innerHTML = `${h}时${m}分${s}秒`;
             if (delta <= 10) {
-                window.open('http://www.haeea.cn/adc/pzcj.shtml');
+                window.open('http://www.haeea.cn');
                 clearInterval(id);
             }
         }, 10);
