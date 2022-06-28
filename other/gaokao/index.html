@@ -42,8 +42,7 @@
 </head>
 <body>
     <button id="button">点击查看倒计时</button>
-    <p class="time" style="display: none;">高考查分倒计时：<span id="time"></span>,打开此页面时到时间后会自动打开查分页面并跳转</p>
-    <p id="test" class="time" style="display: none;">点击此处可以跳转（不会覆盖本页面）</p>
+    <p class="time" style="display: none;">高考倒计时：<span id="time"></span></p>
     <script>
         document.getElementById('button')
             .onclick= () => {
@@ -52,10 +51,8 @@
                 list[1].style.display = 'block';
                 document.getElementById('button').style.display = 'none';
             }
-        document.getElementById('test')
-            .onclick = () => window.open('http://www.haeea.cn');
         const span = document.getElementById('time');
-        const end = new Date(2022, 5, 25, 0, 0, 1);
+        const end = new Date(2023, 5, 7, 9, 0, 0);
         const id = setInterval(function () {
             const now = new Date();
             const delta = end - now;
@@ -63,11 +60,7 @@
             const m = ~~((delta - h * 1000 * 60 * 60) / 1000 / 60);
             const s = ~~((delta - h * 1000 * 60 * 60 - m * 1000 * 60) / 1000);
             span.innerHTML = `${h}时${m}分${s}秒`;
-            if (delta <= 10) {
-                window.open('http://www.haeea.cn');
-                clearInterval(id);
-            }
-        }, 10);
+        }, 100);
     </script>
 </body>
 </html>
