@@ -59,7 +59,7 @@
 
         input {
             font-size: 25px;
-            width: 200px;
+            width: 300px;
             margin: 10px;
         }
     </style>
@@ -103,7 +103,7 @@
             let data = '';
             for (const from in info) {
                 const to = info[from];
-                data += `\n${from}-->${to}`;
+                data += `${data === '' ? '' : '<br>'}${from}-->${to}`;
             }
             res.innerHTML = data;
         }
