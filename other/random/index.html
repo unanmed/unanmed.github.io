@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的世界随机器</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            font-family: 'Fira Code';
+            flex-direction: column;
+        }
+
+        p {
+            font-size: 25px;
+            font-weight: 200;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            padding: 0.4em;
+            margin: 10px;
+        }
+
+         button {
+            width: 150px;
+            height: 10%;
+            font-size: 25px;
+            font-weight: 300;
+            color: white;
+            border-radius: 5px;
+            background-color: rgb(20, 167, 235);
+            transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            box-shadow: 0px 0px 5px black;
+            text-shadow: 2px 2px 2px black;
+            margin-right: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 2px solid rgb(20, 167, 235);
+            margin: 10px;
+        }
+
+        button:hover {
+            border: 2px solid rgb(2, 39, 247);
+        }
+
+        button:active {
+            border: 2px solid rgb(2, 39, 247);
+            background-color: cadetblue;
+        }
+
+        input {
+            font-size: 25px;
+            width: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text" value="0"/>
+    <button id="btn">开始随机</button>
+    <p id="res"></p>
+
+    <script>
+        let n = [];
+
+        const res = document.getElementById('res');
+
+        const input = document.getElementById('input');
+        input.addEventListener('input', e => {
+            n = input.value.split(',');
+        });
+
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', e => {
+            random();
+        })
+
+        function random() {
+            const map = { };
+            const used = [];
+            for (let i = 0; i < n.length; i++) {
+                const v = n[i]
+                const other = n.filter(vv => vv !== v && !used.includes(vv));
+                const l = other.length;
+                if (l === 0) return random();
+                const res = other[Math.floor(Math.random() * l)];
+                used.push(res);
+                map[v] = res;
+            }
+            show(map);
+        }
+
+        function show(info) {
+            let data = '';
+            for (const from in info) {
+                const to = info[from];
+                data += `\n${from}-->${to}`;
+            }
+            res.innerHTML = data;
+        }
+    </script>
+</body>
+</html>
