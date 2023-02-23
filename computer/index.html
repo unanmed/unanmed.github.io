@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机考试答案搜寻器</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            padding-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 90vh;
+        }
+
+        #search-main {
+            width: 70vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #search {
+            width: 60vw;
+            height: 3vh;
+        }
+
+        #content {
+            overflow: auto;
+            height: 80vh;
+            width: 90vw;
+            margin-top: 5vh;
+            display: flex;
+            flex-direction: column;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <span id="search-main">
+            <input type="text" id="search" placeholder="请输入部分或完整题目内容或选项以查询题目" />
+            <span>
+                <input type="checkbox" id="rule" />
+                <label for="rule">模糊匹配</label>
+            </span>
+        </span>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        const content = document.getElementById('content');
+        const search = document.getElementById('search');
+        const rule = document.getElementById('rule');
+        let info;
+
+        (async function () {
+            content.innerText = '加载中，请稍后...';
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/computer/2.json');
+            xhr.responseType = 'text';
+            xhr.send();
+            await new Promise(res => {
+                xhr.addEventListener('load', () => {
+                    info = JSON.parse(responseText);
+                    res();
+                });
+            });
+            content.innerText = '';
+        })();
+
+        function searchText (text) {
+            if (info) return;
+            const blur = rule.checked;
+            let res = '';
+
+            info.question.forEach((v, i) => {
+                if (!blur) {
+                    if (v.includes(text)) {
+                        res += `
+<div>
+    <p>
+        ${i + 1}、 <span style="color: gold">答案: ${info.answer[i]}</span> ${v}
+    </p>
+</div>
+`;
+                    }
+                } else {
+                    const toSearch = text.split('');
+                    let match = true;
+                    toSearch.forEach(vv => {
+                        if (!v.includes(vv)) match = false;
+                    })
+                    if (match) {
+                        res += `
+<div>
+    <p>
+        ${i + 1}、 <span style="color: gold">答案: ${info.answer[i]}</span> ${v}
+    </p>
+</div>
+`;
+                    }
+                }
+            });
+            content.innerHTML = res;
+        }
+
+        search.addEventListener('input', () => searchText(search.value));
+        rule.addEventListener('input', () => searchText(search.value));
+    </script>
+</body>
+
+</html>
