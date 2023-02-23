@@ -68,7 +68,7 @@
         (async function () {
             content.innerText = '加载中，请稍后...';
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', '.computer/2.json');
+            xhr.open('GET', '/computer/2.json');
             xhr.responseType = 'text';
             xhr.send();
             await new Promise(res => {
