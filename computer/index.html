@@ -68,12 +68,12 @@
         (async function () {
             content.innerText = '加载中，请稍后...';
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/computer/2.json');
+            xhr.open('GET', '.computer/2.json');
             xhr.responseType = 'text';
             xhr.send();
             await new Promise(res => {
                 xhr.addEventListener('load', () => {
-                    info = JSON.parse(responseText);
+                    info = JSON.parse(xhr.response);
                     res();
                 });
             });
@@ -81,17 +81,17 @@
         })();
 
         function searchText (text) {
-            if (info) return;
+            if (!info) return;
             const blur = rule.checked;
-            let res = '';
 
+            let res = ''
             info.question.forEach((v, i) => {
                 if (!blur) {
                     if (v.includes(text)) {
                         res += `
 <div>
     <p>
-        ${i + 1}、 <span style="color: gold">答案: ${info.answer[i]}</span> ${v}
+        ${i + 1}、 <span style="color: gold; text-shadow: 1px 1px 2px black">答案: ${info.answer[i]}</span> ${v}
     </p>
 </div>
 `;
@@ -106,7 +106,7 @@
                         res += `
 <div>
     <p>
-        ${i + 1}、 <span style="color: gold">答案: ${info.answer[i]}</span> ${v}
+        ${i + 1}、 <span style="color: gold; text-shadow: 1px 1px 2px black">答案: ${info.answer[i]}</span> ${v}
     </p>
 </div>
 `;
@@ -116,7 +116,9 @@
             content.innerHTML = res;
         }
 
-        search.addEventListener('input', () => searchText(search.value));
+        search.addEventListener('input', () => {
+            searchText(search.value)
+        });
         rule.addEventListener('input', () => searchText(search.value));
     </script>
 </body>
