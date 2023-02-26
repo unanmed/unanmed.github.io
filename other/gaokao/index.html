@@ -18,7 +18,7 @@
         }
 
         p {
-            font-size: 1.5em;
+            font-size: 5vw;
             font-weight: 200;
         }
 
@@ -47,21 +47,20 @@
 </head>
 
 <body>
-    <button id="button">点击查看倒计时</button>
+    <button id="time-button">点击查看倒计时</button>
     <p class="time" style="display: none;">高考倒计时：<span id="time"></span></p>
     <script>
-        document.getElementById('button')
-            .onclick = () => {
-                const list = document.getElementsByClassName('time');
-                list[0].style.display = 'block';
-                list[1].style.display = 'block';
-                document.getElementById('button').style.display = 'none';
-            }
+        const button = document.getElementById('time-button');
+        button.onclick = () => {
+            const list = document.getElementsByClassName('time');
+            list[0].style.display = 'block';
+            button.remove();
+        }
         const span = document.getElementById('time');
         let y = 2023;
         let end = new Date(y, 5, 7, 9, 0, 0);
         while (1) {
-            if (new Date() - end < 0) {
+            if ((new Date()) - end > 0) {
                 y++;
                 end = new Date(y, 5, 7, 9, 0, 0);
             } else {
