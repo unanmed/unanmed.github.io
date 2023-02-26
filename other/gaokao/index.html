@@ -58,7 +58,16 @@
                 document.getElementById('button').style.display = 'none';
             }
         const span = document.getElementById('time');
-        const end = new Date(2023, 5, 7, 9, 0, 0);
+        let y = 2023;
+        let end = new Date(y, 5, 7, 9, 0, 0);
+        while (1) {
+            if (new Date() - end < 0) {
+                y++;
+                end = new Date(y, 5, 7, 9, 0, 0);
+            } else {
+                break;
+            }
+        }
         const id = setInterval(function () {
             const now = new Date();
             const delta = end - now;
