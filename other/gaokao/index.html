@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>高考查分倒计时</title>
     <style>
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             display: flex;
@@ -14,13 +16,16 @@
             align-items: center;
             flex-direction: column;
         }
+
         p {
             font-size: 1.5em;
             font-weight: 200;
         }
+
         span {
             color: #f22;
         }
+
         button {
             width: 10em;
             height: 2em;
@@ -40,12 +45,13 @@
         }
     </style>
 </head>
+
 <body>
     <button id="button">点击查看倒计时</button>
     <p class="time" style="display: none;">高考倒计时：<span id="time"></span></p>
     <script>
         document.getElementById('button')
-            .onclick= () => {
+            .onclick = () => {
                 const list = document.getElementsByClassName('time');
                 list[0].style.display = 'block';
                 list[1].style.display = 'block';
@@ -56,11 +62,13 @@
         const id = setInterval(function () {
             const now = new Date();
             const delta = end - now;
-            const h = ~~(delta / 1000 / 60 / 60);
-            const m = ~~((delta - h * 1000 * 60 * 60) / 1000 / 60);
-            const s = ~~((delta - h * 1000 * 60 * 60 - m * 1000 * 60) / 1000);
-            span.innerHTML = `${h}时${m}分${s}秒`;
+            const d = ~~(delta / 1000 / 60 / 60 / 24);
+            const h = ~~((delta - d * 1000 * 60 * 60 * 24) / 1000 / 60 / 60);
+            const m = ~~((delta - d * 1000 * 60 * 60 * 24 - h * 1000 * 60 * 60) / 1000 / 60);
+            const s = ~~((delta - d * 1000 * 60 * 60 * 24 - h * 1000 * 60 * 60 - m * 1000 * 60) / 1000);
+            span.innerHTML = `${d}天${h}时${m}分${s}秒`;
         }, 100);
     </script>
 </body>
+
 </html>
