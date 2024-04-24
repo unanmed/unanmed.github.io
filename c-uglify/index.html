@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C语言加密工具</title>
+    <link type='text/css' href='style.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div id="main-div">
+        <span>请输入要加密的代码</span>
+        <textarea id="input" placeholder="请在此输入代码" rows="10" autocomplete="off" cols="120" wrap="soft"></textarea>
+        <textarea id="output" placeholder="这里是输出内容" rows="10" readonly autocomplete="off" cols="120"
+            wrap="soft"></textarea>
+        <div>
+            <span>加密字符</span>
+            <input id="encrypt-char" placeholder="输入加密字符" />
+        </div>
+        <div>
+            <button id="parse">开始转换</button>
+        </div>
+    </div>
+    <script src="parse.js"></script>
+</body>
+
+</html>
